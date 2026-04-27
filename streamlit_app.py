@@ -5,6 +5,7 @@ from snowflake.snowpark.functions import col
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import serialization
 import requests  
+from urllib.parse import quote
 
 def get_snowflake_session():
     # 1. Get the key string from secrets
@@ -62,7 +63,7 @@ if ingredients_list:
     for fruit_chosen in ingredients_list:
         ingredients_string += fruit_chosen + ' '
         st.subheader(fruit_chosen+' Nutrition Information')
-        url = "https://my.smoothiefroot.com/api/fruit/"+fruit_chosen
+        url = f"https://my.smoothiefroot.com/api/fruit/{quote(fruit_name)}"
         st.text(url)
         smoothiefroot_response = requests.get(url)  
         if smoothiefroot_response.status_code ==200:
