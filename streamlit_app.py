@@ -7,8 +7,11 @@ from cryptography.hazmat.primitives import serialization
 import requests  
 url = "https://my.smoothiefroot.com/api/fruit/watermelon"
 smoothiefroot_response = requests.get(url)  
-st.text(smoothiefroot_response)
-
+if smoothiefroot_response.status_code ==200:
+    st.text(smoothiefroot_response.json())
+else:
+    st.error(f"Failed to get data: {smoothiefroot_response.status_code}")
+    
 def get_snowflake_session():
     # 1. Get the key string from secrets
     key_str = st.secrets["connections"]["snowflake"]["private_key"]
