@@ -84,8 +84,9 @@ data = cs.fetchall()
 ```
 
 ### compare 
-Library,Syntax Style,Data Return Type,Ideal Use Case
-Connector,Raw SQL,Tuples / Lists,"Fast, simple scripts"
-Snowpark,DataFrame API,Snowpark DataFrame,Complex logic / ML / Streamlit
-SQLAlchemy,ORM / SQL Expression,Objects / Rows,Web Apps / General Backend
+| Library | Syntax Style | Data Return Type | Ideal Use Case |
+| :--- | :--- | :--- | :--- |
+| **Connector** | Raw SQL | Tuples / Lists | Fast, simple scripts |
+| **Snowpark** | DataFrame API | Snowpark DataFrame | Complex logic / ML / Streamlit |
+| **SQLAlchemy** | ORM / SQL Expression | Objects / Rows | Web Apps / General Backend |
 
