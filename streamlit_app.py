@@ -68,9 +68,10 @@ if ingredients_list:
     ingredients_string = ''
     for fruit_chosen in ingredients_list:
         ingredients_string += fruit_chosen + ' '
+        search_on=pd_df.loc[pd_df['FRUIT_NAME'] == fruit_chosen, 'SEARCH_ON'].iloc[0]
         if fruit_chosen:
             st.subheader(fruit_chosen+' Nutrition Information')
-            url = "https://my.smoothiefroot.com/api/fruit/"+quote(fruit_name)
+            url = "https://my.smoothiefroot.com/api/fruit/"+quote(search_on)
             st.text(url)
             smoothiefroot_response = requests.get(url)  
             if smoothiefroot_response.status_code ==200:
