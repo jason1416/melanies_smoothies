@@ -74,7 +74,7 @@ url = "https://my.smoothiefroot.com/api/fruit/watermelon"
 smoothiefroot_response = requests.get(url)  
 if smoothiefroot_response.status_code ==200:
     #st.text(smoothiefroot_response.json())
-    sf_df=st.dataframe(data=smoothiefroot_response.json(),use_container_width=true)
+    sf_df=st.dataframe(data=smoothiefroot_response.json(),use_container_width=True)
 else:
     st.error(f"Failed to get data: {smoothiefroot_response.status_code}")
 
