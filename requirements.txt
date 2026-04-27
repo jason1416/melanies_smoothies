@@ -1,2 +1,5 @@
-streamlit[snowflake]
-numba>=0.56.0
+#streamlit[snowflake]
+#numba>=0.56.0
+snowflake-snowpark-python
+streamlit
+
