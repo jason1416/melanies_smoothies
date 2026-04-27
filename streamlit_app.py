@@ -5,7 +5,8 @@ from snowflake.snowpark.functions import col
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import serialization
 import requests  
-smoothiefroot_response = requests.get("[https://my.smoothiefroot.com/api/fruit/watermelon](https://my.smoothiefroot.com/api/fruit/watermelon)")  
+url = "https://my.smoothiefroot.com/api/fruit/watermelon"
+smoothiefroot_response = requests.get(url)  
 st.text(smoothiefroot_response)
 
 def get_snowflake_session():
