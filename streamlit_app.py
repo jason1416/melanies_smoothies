@@ -63,7 +63,7 @@ if ingredients_list:
     for fruit_chosen in ingredients_list:
         ingredients_string += fruit_chosen + ' '
         st.subheader(fruit_chosen+' Nutrition Information')
-        url = f"https://my.smoothiefroot.com/api/fruit/{quote(fruit_name)}"
+        url = "https://my.smoothiefroot.com/api/fruit/"+quote(fruit_name)
         st.text(url)
         smoothiefroot_response = requests.get(url)  
         if smoothiefroot_response.status_code ==200:
