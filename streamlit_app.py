@@ -31,7 +31,7 @@ def get_snowflake_session():
     return conn.session()
 
 session = get_snowflake_session()
-st.success("Connected to Snowflake!")
+#st.success("Connected to Snowflake!")
 # Write directly to the app.
 st.title(f":cup_with_straw: Customize Your Smoothie! :cup_with_straw:")
 st.write(
