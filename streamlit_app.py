@@ -5,13 +5,7 @@ from snowflake.snowpark.functions import col
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import serialization
 import requests  
-url = "https://my.smoothiefroot.com/api/fruit/watermelon"
-smoothiefroot_response = requests.get(url)  
-if smoothiefroot_response.status_code ==200:
-    st.text(smoothiefroot_response.json())
-else:
-    st.error(f"Failed to get data: {smoothiefroot_response.status_code}")
-    
+
 def get_snowflake_session():
     # 1. Get the key string from secrets
     key_str = st.secrets["connections"]["snowflake"]["private_key"]
@@ -75,6 +69,15 @@ if ingredients_list:
     if time_to_insert:
         session.sql(my_insert_stmt).collect()
         st.success('Your Smoothie is ordered!', icon="✅")
-        
+
+url = "https://my.smoothiefroot.com/api/fruit/watermelon"
+smoothiefroot_response = requests.get(url)  
+if smoothiefroot_response.status_code ==200:
+    #st.text(smoothiefroot_response.json())
+    sf_df=st.dataframe(data=smoothiefroot_response.json(),use_container_width=true)
+else:
+    st.error(f"Failed to get data: {smoothiefroot_response.status_code}")
+
+
 
     
