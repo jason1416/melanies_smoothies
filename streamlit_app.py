@@ -6,6 +6,7 @@ from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import serialization
 import requests  
 from urllib.parse import quote
+import pandas as pd
 
 def get_snowflake_session():
     # 1. Get the key string from secrets
@@ -50,7 +51,11 @@ st.write("The Name on Smoothie will be:", name_on_order)
 #conn = st.connection("snowflake")
 #session = conn.session()
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON'))
-st.dataframe(data=my_dataframe, use_container_width=True)
+#st.dataframe(data=my_dataframe, use_container_width=True)
+#st.stop()
+# convert the Snowpark Dataframe to a Pandas Dataframe so we can use the LOC function 
+pd_df=my_dataframe.to_pandas()
+st.dataframw(pd_df)
 st.stop()
 
 ingredients_list = st.multiselect(
