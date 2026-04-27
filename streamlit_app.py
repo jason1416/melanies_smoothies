@@ -62,15 +62,16 @@ if ingredients_list:
     ingredients_string = ''
     for fruit_chosen in ingredients_list:
         ingredients_string += fruit_chosen + ' '
-        st.subheader(fruit_chosen+' Nutrition Information')
-        url = "https://my.smoothiefroot.com/api/fruit/"+quote(fruit_name)
-        st.text(url)
-        smoothiefroot_response = requests.get(url)  
-        if smoothiefroot_response.status_code ==200:
-            #st.text(smoothiefroot_response.json())
-            sf_df=st.dataframe(data=smoothiefroot_response.json(),use_container_width=True)
-        else:
-            st.error(f"Failed to get data: {smoothiefroot_response.status_code}")
+        if fruit_chosen:
+            st.subheader(fruit_chosen+' Nutrition Information')
+            url = "https://my.smoothiefroot.com/api/fruit/"+quote(fruit_name)
+            st.text(url)
+            smoothiefroot_response = requests.get(url)  
+            if smoothiefroot_response.status_code ==200:
+                #st.text(smoothiefroot_response.json())
+                sf_df=st.dataframe(data=smoothiefroot_response.json(),use_container_width=True)
+            else:
+                st.error(f"Failed to get data: {smoothiefroot_response.status_code}")
 
     my_insert_stmt = """ insert into smoothies.public.orders(ingredients,NAME_ON_ORDER)
                         values ('""" + ingredients_string + """','"""+name_on_order+"""')"""
