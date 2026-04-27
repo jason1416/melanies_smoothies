@@ -4,6 +4,9 @@ from snowflake.snowpark.context import  get_active_session
 from snowflake.snowpark.functions import col
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import serialization
+import requests  
+smoothiefroot_response = requests.get("[https://my.smoothiefroot.com/api/fruit/watermelon](https://my.smoothiefroot.com/api/fruit/watermelon)")  
+st.text(smoothiefroot_response)
 
 def get_snowflake_session():
     # 1. Get the key string from secrets
